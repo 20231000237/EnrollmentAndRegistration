@@ -24,13 +24,13 @@ class MainActivity : AppCompatActivity() {
         // add students
         val students = listOf(
             Student("20231000237", "", "Password123!", "unregistered", emptyList()),
-            Student("admin2", "", "admin2", "unregistered", emptyList()),
-            Student("admin3", "", "admin3", "unregistered", emptyList())
+            Student("20231000045", "", "hellopass1", "unregistered", emptyList()),
+            Student("admin", "", "admin", "unregistered", emptyList())
         )
 
 
         // !!! RUN THIS CODE TO OVERWRITE/RESET ALL RECORDS IN THE DATA FILE !!!
-//
+
 //        // convert to json then put in data.txt
 //        val gson = Gson()
 //        val jsonString = gson.toJson(students)

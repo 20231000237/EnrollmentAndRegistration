@@ -19,8 +19,6 @@ class AlreadyRegisteredOrEnrolled : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_already_registered_or_enrolled)
 
-        // change 1
-
         // read data file
         val gson = Gson()
         val type = object : TypeToken<MutableList<Student>>() {}.type
@@ -32,9 +30,9 @@ class AlreadyRegisteredOrEnrolled : AppCompatActivity() {
 
         // display the details
         if (chosenStudent != null) {
-            findViewById<TextView>(R.id.studentno).text = "Student No.: ${chosenStudent.studentNo}"
-            findViewById<TextView>(R.id.status).text = "Status: ${chosenStudent.status}"
-            findViewById<TextView>(R.id.name).text = "Name: ${chosenStudent.name}"
+            findViewById<TextView>(R.id.studentno).text = "${chosenStudent.studentNo}"
+            findViewById<TextView>(R.id.status).text = "${chosenStudent.status}"
+            findViewById<TextView>(R.id.name).text = "${chosenStudent.name}"
 
             // subject list
             val subjectListView = findViewById<ListView>(R.id.subjects)
