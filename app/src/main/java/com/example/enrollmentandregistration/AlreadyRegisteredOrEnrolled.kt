@@ -19,6 +19,8 @@ class AlreadyRegisteredOrEnrolled : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_already_registered_or_enrolled)
 
+        // change 1
+
         // read data file
         val gson = Gson()
         val type = object : TypeToken<MutableList<Student>>() {}.type
