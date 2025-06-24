@@ -101,7 +101,7 @@ class RegistrationInterface : AppCompatActivity() {
 
         // display status of currently logged in student
         val status = findViewById<TextView>(R.id.status)
-        status.text = "Status: ${StudentData.status}"
+        status.text = "You are currently: UNREGISTERED. Please enter your name and choose your desired subjects to register."
 
         // link elements from the .xml file
         nameField = findViewById<EditText>(R.id.name)
@@ -167,6 +167,9 @@ class RegistrationInterface : AppCompatActivity() {
                 openFileOutput("data.txt", Context.MODE_PRIVATE).use {
                     it.write(updatedJson.toByteArray())
                 }
+                
+                // display success toast message
+                Toast.makeText(this, "Successfully registered!", Toast.LENGTH_SHORT).show()
 
                 // change screens
                 val intent = Intent(this, AlreadyRegisteredOrEnrolled::class.java)

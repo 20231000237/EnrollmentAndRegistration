@@ -7,15 +7,34 @@
     android:layout_height="match_parent"
     tools:context=".RegistrationInterface">
 
+    <ListView
+        android:id="@+id/subjectList"
+        android:layout_width="350dp"
+        android:layout_height="350dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="1dp"
+        android:background="@color/white"
+        android:choiceMode="multipleChoice"
+        android:elevation="1dp"
+        app:layout_constraintBottom_toTopOf="@+id/register"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.525"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/label2"
+        app:layout_constraintVertical_bias="0.0" />
+
     <TextView
         android:id="@+id/status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="50dp"
+        android:width="300dp"
         android:text=""
-        android:textSize="25dp"
+        android:textAlignment="center"
+        android:textSize="15dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -23,39 +42,39 @@
         android:id="@+id/label1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="108dp"
+        android:layout_marginTop="50dp"
         android:text="Enter full name: "
+        android:textColor="@color/black"
+        android:textFontWeight="700"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.299"
+        app:layout_constraintHorizontal_bias="0.175"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/status" />
 
     <TextView
         android:id="@+id/label2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="40dp"
         android:text="Subject Selection:"
+        android:textColor="@color/black"
+        android:textFontWeight="500"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.312"
+        app:layout_constraintHorizontal_bias="0.185"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/name" />
 
-    <ListView
-        android:id="@+id/subjectList"
-        android:layout_width="409dp"
-        android:layout_height="350dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="1dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginBottom="1dp"
-        android:choiceMode="multipleChoice"
-        app:layout_constraintBottom_toTopOf="@+id/register"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/label2" />
+    <View
+        android:layout_width="352dp"
+        android:layout_height="352dp"
+        android:background="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/subjectList"
+        app:layout_constraintEnd_toEndOf="@+id/subjectList"
+        app:layout_constraintStart_toStartOf="@+id/subjectList"
+        app:layout_constraintTop_toTopOf="@+id/subjectList"
+        android:elevation="-1dp"/>
 
     <Button
         android:id="@+id/register"
@@ -76,6 +95,7 @@
         android:hint="Last Name, First Name, MI."
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.287"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/label1" />
 
