@@ -59,9 +59,9 @@ class MainActivity : AppCompatActivity() {
 
         loginButton.setOnClickListener {
             // open data file
-            val json = openFileInput("data.txt").bufferedReader().readText() // open file and read as json
+            val json = openFileInput("data.txt").bufferedReader().readText() // open file and read as string
             val type = object : TypeToken<List<Student>>() {}.type // define type to be converted into (in this case, list)
-            val studentList: List<Student> = gson.fromJson(json, type) // convert to said type, and put it in a list
+            val studentList: List<Student> = gson.fromJson(json, type) // convert to said type
 
             // checks if a student with the inputted credentials is in the array
             var found = studentList.any {

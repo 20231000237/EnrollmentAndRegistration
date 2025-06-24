@@ -145,9 +145,9 @@ class RegistrationInterface : AppCompatActivity() {
 
                 // read data file
                 val gson = Gson() // creates a new instance of the gson class which is needed for us to manipulate json data like reading, writing and appending
-                val json = openFileInput("data.txt").bufferedReader().readText() // open file and read as json
+                val json = openFileInput("data.txt").bufferedReader().readText() // open file and read as string
                 val type = object : TypeToken<MutableList<Student>>() {}.type // define type to be converted into (in this case, list)
-                val studentList: MutableList<Student> = gson.fromJson(json, type) // convert to said type, and put it in a list
+                val studentList: MutableList<Student> = gson.fromJson(json, type) // convert to said type
 
                 // find current logged in student in data file
                 val studentToUpdate = studentList.find { it.studentNo == StudentData.studentNo }
