@@ -21,10 +21,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val gson = Gson() // creates a new instance of the gson class which is needed for us to manipulate json data like reading, writing and appending
+        val gson = Gson() // creates a new instance of the gson class which is needed to manipulate json data like reading, writing and appending
 
         // create predefined students for initial run
-        // add students
         val students = listOf(
             Student("20231000237", "", "Password123!", "unregistered", emptyList()),
             Student("20231000045", "", "hellopass1", "unregistered", emptyList()),
@@ -34,12 +33,12 @@ class MainActivity : AppCompatActivity() {
 
         // check is there is already an existing data file, if none, create one
         try {
-            openFileInput("data.txt").bufferedReader().readText()
+            openFileInput("data.txt").bufferedReader().readText() // if existing, open the file
         } catch (e: FileNotFoundException) {
-            // convert to json then put in data.txt
-            val jsonString = gson.toJson(students)
+            // if not existing, put in the predefined students
+            val jsonString = gson.toJson(students) // put the predefined students in a json string
             openFileOutput("data.txt", Context.MODE_PRIVATE).use {
-                it.write(jsonString.toByteArray())
+                it.write(jsonString.toByteArray()) // overwrite the data file with the predefined students in it
             }
         }
 

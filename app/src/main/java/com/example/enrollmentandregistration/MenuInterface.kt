@@ -21,6 +21,7 @@ class MenuInterface : AppCompatActivity() {
 
         registrationBtn.setOnClickListener {
             var intent = Intent()
+            // change interface depending on the status of the logged in student
             when (StudentData.status.toString()) {
                 "unregistered" -> intent = Intent(this, RegistrationInterface::class.java)
                 "registered" -> intent = Intent(this, AlreadyRegisteredOrEnrolled::class.java)

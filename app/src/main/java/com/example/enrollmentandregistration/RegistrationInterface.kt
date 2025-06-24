@@ -99,9 +99,11 @@ class RegistrationInterface : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registration_interface)
 
+        // display status of currently logged in student
         val status = findViewById<TextView>(R.id.status)
         status.text = "Status: ${StudentData.status}"
 
+        // link elements from the .xml file
         nameField = findViewById<EditText>(R.id.name)
         selectionList = findViewById(R.id.subjectList)
         registerButton = findViewById(R.id.register)
@@ -162,7 +164,6 @@ class RegistrationInterface : AppCompatActivity() {
 
                 // overwrite the data file with the updated student subjects
                 val updatedJson = gson.toJson(studentList)
-
                 openFileOutput("data.txt", Context.MODE_PRIVATE).use {
                     it.write(updatedJson.toByteArray())
                 }
