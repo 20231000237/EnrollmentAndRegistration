@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.ListAdapter
 import android.widget.ListView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -41,9 +42,7 @@ class AlreadyRegisteredOrEnrolled : AppCompatActivity() {
         }
 
         findViewById<Button>(R.id.toEnrollment).setOnClickListener {
-            val intent = Intent(this, RegistrationInterface::class.java) // replace to enrollment interface when created
-            startActivity(intent)
-            finish()
+            Toast.makeText(this, "NO ENROLLMENT FUNCTION YET", Toast.LENGTH_SHORT).show()
         }
 
 

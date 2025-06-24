@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg"
     tools:context=".RegistrationInterface">
 
     <ListView
@@ -82,6 +83,9 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="60dp"
         android:text="Register"
+        android:background="@drawable/button"
+        android:paddingHorizontal="10dp"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
