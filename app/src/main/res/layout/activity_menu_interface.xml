@@ -5,22 +5,37 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/login"
+    android:background="@drawable/bg2"
     tools:context=".MenuInterface">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="130dp"
+        android:textSize="30dp"
+        android:textColor="#3C5026"
+        android:textFontWeight="900"
+        android:fontFamily="sans-serif-black"
+        android:text="Welcome!"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/registrationButton"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
-        android:text="Registration"
+        android:layout_marginTop="40dp"
         android:background="@drawable/button"
         android:paddingHorizontal="10dp"
+        android:text="Registration"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <Button
         android:id="@+id/enrollmentButton"
