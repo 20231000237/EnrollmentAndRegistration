@@ -14,25 +14,38 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import java.io.FileNotFoundException
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
-
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val gson = Gson() // creates a new instance of the gson class which is needed for us to manipulate json data like reading, writing and appending
+
+        // create predefined students for initial run
         // add students
         val students = listOf(
             Student("20231000237", "", "Password123!", "unregistered", emptyList()),
             Student("20231000045", "", "hellopass1", "unregistered", emptyList()),
-            Student("admin", "", "admin", "unregistered", emptyList())
+            Student("20231000318", "", "miyagi", "unregistered", emptyList()),
+            Student("1", "", "password", "unregistered", emptyList())
         )
 
+        // check is there is already an existing data file, if none, create one
+        try {
+            openFileInput("data.txt").bufferedReader().readText()
+        } catch (e: FileNotFoundException) {
+            // convert to json then put in data.txt
+            val jsonString = gson.toJson(students)
+            openFileOutput("data.txt", Context.MODE_PRIVATE).use {
+                it.write(jsonString.toByteArray())
+            }
+        }
 
         // !!! RUN THIS CODE TO OVERWRITE/RESET ALL RECORDS IN THE DATA FILE !!!
 
-//        // convert to json then put in data.txt
-//        val gson = Gson()
+        // convert to json then put in data.txt
 //        val jsonString = gson.toJson(students)
 //        openFileOutput("data.txt", Context.MODE_PRIVATE).use {
 //            it.write(jsonString.toByteArray())
@@ -40,18 +53,16 @@ class MainActivity : AppCompatActivity() {
 
         // !!! END OF "THIS CODE" !!!
 
-
         // link input fields and login button
         val studentNoField = findViewById<EditText>(R.id.studentno);
         val passwordField = findViewById<EditText>(R.id.password);
         val loginButton = findViewById<Button>(R.id.loginButton);
 
         loginButton.setOnClickListener {
-            // open data file and put it in a list
-            val gson = Gson()
-            val json = openFileInput("data.txt").bufferedReader().readText()
-            val type = object : TypeToken<List<Student>>() {}.type
-            val studentList: List<Student> = gson.fromJson(json, type)
+            // open data file
+            val json = openFileInput("data.txt").bufferedReader().readText() // open file and read as json
+            val type = object : TypeToken<List<Student>>() {}.type // define type to be converted into (in this case, list)
+            val studentList: List<Student> = gson.fromJson(json, type) // convert to said type, and put it in a list
 
             // checks if a student with the inputted credentials is in the array
             var found = studentList.any {
