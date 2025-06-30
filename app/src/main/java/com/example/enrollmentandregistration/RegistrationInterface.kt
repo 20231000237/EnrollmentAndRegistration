@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.ListView
 import android.widget.TextView
 import android.widget.Toast
@@ -98,10 +99,7 @@ class RegistrationInterface : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registration_interface)
-
-        // display status of currently logged in student
-        val status = findViewById<TextView>(R.id.status)
-        status.text = "You are currently: UNREGISTERED. Please enter your name and choose your desired subjects to register."
+        enableEdgeToEdge()
 
         // link elements from the .xml file
         nameField = findViewById<EditText>(R.id.name)
@@ -138,11 +136,6 @@ class RegistrationInterface : AppCompatActivity() {
             } else if (nameField.text.toString().isBlank()) {
                 Toast.makeText(this, "Please enter your name!", Toast.LENGTH_SHORT).show()
             } else {
-                // update data in StudentData
-                StudentData.subjects = selectedSubjects
-                StudentData.status = "registered"
-                StudentData.name = nameField.text.toString()
-
                 // read data file
                 val gson = Gson() // creates a new instance of the gson class which is needed for us to manipulate json data like reading, writing and appending
                 val json = openFileInput("data.txt").bufferedReader().readText() // open file and read as string
@@ -160,6 +153,11 @@ class RegistrationInterface : AppCompatActivity() {
                     val updatedStudent = studentToUpdate.copy(subjects = selectedSubjects, status = "registered", name = nameField.text.toString())
                     val index = studentList.indexOf(studentToUpdate)
                     studentList[index] = updatedStudent
+
+                    // update data in StudentData
+                    StudentData.subjects = selectedSubjects
+                    StudentData.status = "registered"
+                    StudentData.name = nameField.text.toString()
                 }
 
                 // overwrite the data file with the updated student subjects
@@ -176,6 +174,11 @@ class RegistrationInterface : AppCompatActivity() {
                 startActivity(intent)
                 finish()
             }
+        }
+
+        // back button
+        findViewById<ImageView>(R.id.backBtn).setOnClickListener {
+            finish()
         }
     }
 }

@@ -13,6 +13,7 @@ class MenuInterface : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_menu_interface)
+        enableEdgeToEdge()
 
         // link menu buttons
         val registrationBtn = findViewById<Button>(R.id.registrationButton);
@@ -30,7 +31,8 @@ class MenuInterface : AppCompatActivity() {
             startActivity(intent)
         }
         enrollmentBtn.setOnClickListener {
-
+            var intent = Intent(this, EnrollmentInterface::class.java)
+            startActivity(intent)
         }
         feeBtn.setOnClickListener {
 

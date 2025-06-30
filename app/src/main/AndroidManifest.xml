@@ -13,21 +13,23 @@
         android:theme="@style/Theme.EnrollmentAndRegistration"
         tools:targetApi="31">
         <activity
-            android:name=".AlreadyRegisteredOrEnrolled"
-            android:windowSoftInputMode="adjustNothing"
+            android:name=".EnrollmentInterface"
             android:exported="false" />
+        <activity
+            android:name=".AlreadyRegisteredOrEnrolled"
+            android:exported="false"
+            android:windowSoftInputMode="adjustNothing" />
         <activity
             android:name=".RegistrationInterface"
-            android:windowSoftInputMode="adjustNothing"
-            android:exported="false" />
+            android:exported="false"/>
         <activity
             android:name=".MenuInterface"
-            android:windowSoftInputMode="adjustNothing"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustNothing" />
         <activity
             android:name=".MainActivity"
-            android:windowSoftInputMode="adjustNothing"
-            android:exported="true">
+            android:exported="true"
+            android:windowSoftInputMode="adjustNothing">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
