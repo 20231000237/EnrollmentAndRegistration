@@ -1,13 +1,12 @@
 package com.example.enrollmentandregistration
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
-import android.widget.EditText
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 
 class MenuInterface : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,19 +23,73 @@ class MenuInterface : AppCompatActivity() {
             var intent = Intent()
             // change interface depending on the status of the logged in student
             when (StudentData.status.toString()) {
-                "unregistered" -> intent = Intent(this, RegistrationInterface::class.java)
-                "registered" -> intent = Intent(this, AlreadyRegisteredOrEnrolled::class.java)
-                "enrolled" -> intent = Intent(this, AlreadyRegisteredOrEnrolled::class.java)
+                "unregistered" -> {
+                    intent = Intent(this, RegistrationInterface::class.java)
+                    startActivity(intent)
+                }
+                "registered" -> {
+                    intent = Intent(this, InterfaceHandler::class.java)
+                    startActivity(intent)
+                }
+                "enrolled" -> {
+                    AlertDialog.Builder(this)
+                        .setTitle("NOTICE")
+                        .setMessage("You are already enrolled!")
+                        .setNegativeButton("OK") { dialog, _ ->
+                            dialog.dismiss()
+                        }
+                        .show()
+                }
             }
-            startActivity(intent)
         }
         enrollmentBtn.setOnClickListener {
-            var intent = Intent(this, EnrollmentInterface::class.java)
-            startActivity(intent)
+            var intent = Intent()
+            // change interface depending on the status of the logged in student
+            when (StudentData.status.toString()) {
+                "unregistered" -> {
+                    AlertDialog.Builder(this)
+                        .setTitle("NOTICE")
+                        .setMessage("Please register first!")
+                        .setNegativeButton("OK") { dialog, _ ->
+                            dialog.dismiss()
+                        }
+                        .show()
+                }
+                "registered" -> {
+                    intent = Intent(this, EnrollmentInterface::class.java)
+                    startActivity(intent)
+                }
+                "enrolled" -> {
+                    intent = Intent(this, InterfaceHandler::class.java)
+                    startActivity(intent)
+                }
+            }
         }
         feeBtn.setOnClickListener {
-
+            findViewById<Button>(R.id.feeButton).setOnClickListener {
+                Toast.makeText(this, "NO FEES FUNCTION YET", Toast.LENGTH_SHORT).show()
+            }
+//            var intent = Intent()
+//            // change interface depending on the status of the logged in student
+//            when (StudentData.status.toString()) {
+//                "unregistered" -> {
+//                    AlertDialog.Builder(this)
+//                        .setTitle("NOTICE")
+//                        .setMessage("Please register first!")
+//                        .setNegativeButton("OK") { dialog, _ ->
+//                            dialog.dismiss()
+//                        }
+//                        .show()
+//                }
+//                "registered" -> {
+//                    intent = Intent(this, EnrollmentInterface::class.java)
+//                    startActivity(intent)
+//                }
+//                "enrolled" -> {
+//                    intent = Intent(this, InterfaceHandler::class.java)
+//                    startActivity(intent)
+//                }
+//            }
         }
-
     }
 }

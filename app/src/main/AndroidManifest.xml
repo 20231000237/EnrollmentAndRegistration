@@ -16,7 +16,7 @@
             android:name=".EnrollmentInterface"
             android:exported="false" />
         <activity
-            android:name=".AlreadyRegisteredOrEnrolled"
+            android:name=".InterfaceHandler"
             android:exported="false"
             android:windowSoftInputMode="adjustNothing" />
         <activity

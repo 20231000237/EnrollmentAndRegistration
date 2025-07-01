@@ -30,7 +30,9 @@ class MainActivity : AppCompatActivity() {
             Student("20231000237", "", "Password123!", "unregistered", emptyList()),
             Student("20231000045", "", "hellopass1", "unregistered", emptyList()),
             Student("20231000318", "", "miyagi", "unregistered", emptyList()),
-            Student("1", "", "password", "unregistered", emptyList())
+            Student("1", "", "admin", "unregistered", emptyList()),
+            Student("2", "", "admin", "unregistered", emptyList()),
+            Student("3", "", "admin", "unregistered", emptyList())
         )
 
         // check is there is already an existing data file, if none, create one

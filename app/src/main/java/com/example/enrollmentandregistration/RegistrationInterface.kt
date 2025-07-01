@@ -8,15 +8,11 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.ListView
-import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import kotlin.collections.toByteArray
 
 class RegistrationInterface : AppCompatActivity() {
     lateinit var nameField: EditText
@@ -170,7 +166,7 @@ class RegistrationInterface : AppCompatActivity() {
                 Toast.makeText(this, "Successfully registered!", Toast.LENGTH_SHORT).show()
 
                 // change screens
-                val intent = Intent(this, AlreadyRegisteredOrEnrolled::class.java)
+                val intent = Intent(this, InterfaceHandler::class.java)
                 startActivity(intent)
                 finish()
             }
