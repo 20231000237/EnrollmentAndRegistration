@@ -66,30 +66,32 @@ class MenuInterface : AppCompatActivity() {
             }
         }
         feeBtn.setOnClickListener {
-            findViewById<Button>(R.id.feeButton).setOnClickListener {
-                Toast.makeText(this, "NO FEES FUNCTION YET", Toast.LENGTH_SHORT).show()
+            var intent = Intent()
+            // change interface depending on the status of the logged in student
+            when (StudentData.status.toString()) {
+                "unregistered" -> {
+                    AlertDialog.Builder(this)
+                        .setTitle("NOTICE")
+                        .setMessage("Please enroll first!")
+                        .setNegativeButton("OK") { dialog, _ ->
+                            dialog.dismiss()
+                        }
+                        .show()
+                }
+                "registered" -> {
+                    AlertDialog.Builder(this)
+                        .setTitle("NOTICE")
+                        .setMessage("Please enroll first!")
+                        .setNegativeButton("OK") { dialog, _ ->
+                            dialog.dismiss()
+                        }
+                        .show()
+                }
+                "enrolled" -> {
+                    intent = Intent(this, FeeInterface::class.java)
+                    startActivity(intent)
+                }
             }
-//            var intent = Intent()
-//            // change interface depending on the status of the logged in student
-//            when (StudentData.status.toString()) {
-//                "unregistered" -> {
-//                    AlertDialog.Builder(this)
-//                        .setTitle("NOTICE")
-//                        .setMessage("Please register first!")
-//                        .setNegativeButton("OK") { dialog, _ ->
-//                            dialog.dismiss()
-//                        }
-//                        .show()
-//                }
-//                "registered" -> {
-//                    intent = Intent(this, EnrollmentInterface::class.java)
-//                    startActivity(intent)
-//                }
-//                "enrolled" -> {
-//                    intent = Intent(this, InterfaceHandler::class.java)
-//                    startActivity(intent)
-//                }
-//            }
         }
     }
 }

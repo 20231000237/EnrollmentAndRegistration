@@ -78,12 +78,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
+            android:layout_marginStart="16dp"
             android:text="Enter full name: "
             android:textColor="@color/black"
-            android:textFontWeight="700"
+            android:textStyle="bold"
             android:textSize="20dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.125"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/status" />
 
@@ -97,8 +96,6 @@
             android:hint="Last Name, First Name, MI."
             android:inputType="text"
             android:padding="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/label1"
             app:layout_constraintTop_toBottomOf="@+id/label1" />
 
@@ -107,18 +104,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
+            android:layout_marginStart="16dp"
             android:text="Subject Selection:"
             android:textColor="@color/black"
-            android:textFontWeight="500"
+            android:textStyle="bold"
             android:textSize="20dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.039"
-            app:layout_constraintStart_toStartOf="@+id/subjectList"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/name" />
 
         <ListView
             android:id="@+id/subjectList"
-            android:layout_width="325dp"
+            android:layout_width="345dp"
             android:layout_height="300dp"
             android:background="@drawable/frosted_glass_bg"
             android:layout_marginTop="4dp"

@@ -17,38 +17,29 @@ import com.google.gson.reflect.TypeToken
 class InterfaceHandler : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_interface_handler)
         enableEdgeToEdge()
+        setContentView(R.layout.activity_interface_handler)
 
-        // read data file
-        val gson = Gson() // creates a new instance of the gson class which is needed for us to manipulate json data like reading, writing and appending
-        val json = openFileInput("data.txt").bufferedReader().readText() // open file and read as a string
-        val type = object : TypeToken<MutableList<Student>>() {}.type // define type to be converted into (in this case, list)
-        val studentList: MutableList<Student> = gson.fromJson(json, type) // convert to said type
-
-        // find current logged in student in data file
-        val chosenStudent = studentList.find { it.studentNo == StudentData.studentNo }
 
         // display the details
-        if (chosenStudent != null) {
-            val status = findViewById<TextView>(R.id.status)
-            findViewById<TextView>(R.id.studentno).text = "${chosenStudent.studentNo}"
-            status.text = "${chosenStudent.status}"
-            findViewById<TextView>(R.id.name).text = "${chosenStudent.name}"
+        val status = findViewById<TextView>(R.id.status)
+        findViewById<TextView>(R.id.studentno).text = "${StudentData.studentNo}"
+        status.text = "${StudentData.status}"
+        findViewById<TextView>(R.id.name).text = "${StudentData.name}"
 
-            // change text color depending on the status
-            if (status.text.toString() == "registered") {
-                status.setTextColor(Color.parseColor("#008000"))
-            } else if (status.text.toString() == "enrolled") {
-                status.setTextColor(Color.parseColor("#0096FF"))
-            } else {
-                status.setTextColor(Color.parseColor("#8B0000"))
-            }
-            // subject list
-            val subjectListView = findViewById<ListView>(R.id.subjects)
-            val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, chosenStudent.subjects)
-            subjectListView.adapter = adapter
+        // change text color depending on the status
+        if (status.text.toString() == "registered") {
+            status.setTextColor(Color.parseColor("#008000")) // parseColor() to convert string to int since setTextColor expects int
+        } else if (status.text.toString() == "enrolled") {
+            status.setTextColor(Color.parseColor("#0096FF"))
+        } else {
+            status.setTextColor(Color.parseColor("#8B0000"))
         }
+        // subject list
+        val subjectListView = findViewById<ListView>(R.id.subjects)
+        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, StudentData.subjects)
+        subjectListView.adapter = adapter
+
 
         if (StudentData.status.toString() == "registered") { // if the student's status is "registered"
             findViewById<TextView>(R.id.title).text = "Registration Status"
@@ -64,7 +55,9 @@ class InterfaceHandler : AppCompatActivity() {
             findViewById<TextView>(R.id.subjectListLabel).text = "Enrolled Subjects:"
             findViewById<Button>(R.id.toNextStep).text = "PROCEED TO FEES"
             findViewById<Button>(R.id.toNextStep).setOnClickListener {
-                Toast.makeText(this, "NO FEES FUNCTION YET", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, FeeInterface::class.java)
+                startActivity(intent)
+                finish()
             }
         }
 

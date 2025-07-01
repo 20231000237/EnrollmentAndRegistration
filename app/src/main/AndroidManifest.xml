@@ -13,6 +13,9 @@
         android:theme="@style/Theme.EnrollmentAndRegistration"
         tools:targetApi="31">
         <activity
+            android:name=".FeeInterface"
+            android:exported="false" />
+        <activity
             android:name=".EnrollmentInterface"
             android:exported="false" />
         <activity
@@ -21,7 +24,7 @@
             android:windowSoftInputMode="adjustNothing" />
         <activity
             android:name=".RegistrationInterface"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".MenuInterface"
             android:exported="false"
